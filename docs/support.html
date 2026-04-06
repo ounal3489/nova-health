@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Nova</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #2D2D3A;
+            background: #FDFAFF;
+            line-height: 1.7;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(107,63,160,0.08);
+            z-index: 100;
+            padding: 0 24px;
+        }
+
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6B3FA0, #D973A6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5A5A6E;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #6B3FA0; }
+
+        /* Header */
+        .page-header {
+            padding: 120px 24px 48px;
+            text-align: center;
+            background: linear-gradient(160deg, #F5EEFA 0%, #FDF0F6 40%, #FDFAFF 100%);
+        }
+
+        .page-header h1 {
+            font-size: 40px;
+            font-weight: 800;
+            color: #2D2D3A;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            font-size: 16px;
+            color: #6E6E82;
+        }
+
+        /* Language Tabs */
+        .lang-tabs {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 32px 24px 0;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .lang-tab {
+            padding: 10px 24px;
+            border-radius: 10px;
+            border: 2px solid rgba(107,63,160,0.15);
+            background: #fff;
+            color: #6B3FA0;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-tab:hover { border-color: #6B3FA0; }
+
+        .lang-tab.active {
+            background: linear-gradient(135deg, #6B3FA0, #8B5FC0);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        /* FAQ */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 32px 24px 80px;
+        }
+
+        .faq-section h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #6B3FA0;
+            margin: 36px 0 20px;
+            text-align: center;
+        }
+
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+
+        .faq-item {
+            background: #fff;
+            border: 1px solid rgba(107,63,160,0.08);
+            border-radius: 16px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+
+        .faq-item:hover { box-shadow: 0 4px 20px rgba(107,63,160,0.08); }
+
+        .faq-question {
+            padding: 20px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #2D2D3A;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 22px;
+            font-weight: 300;
+            color: #6B3FA0;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+
+        .faq-item.open .faq-question::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .faq-answer-inner {
+            padding: 0 24px 20px;
+            font-size: 15px;
+            color: #5A5A6E;
+            line-height: 1.7;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: linear-gradient(135deg, #6B3FA0, #8B5FC0);
+            padding: 80px 24px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .contact-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .contact-section p {
+            font-size: 17px;
+            opacity: 0.9;
+            margin-bottom: 28px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .email-btn {
+            display: inline-block;
+            padding: 16px 36px;
+            background: #fff;
+            color: #6B3FA0;
+            border-radius: 14px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .email-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            padding: 48px 24px;
+            text-align: center;
+            color: #9999AA;
+            font-size: 14px;
+        }
+
+        .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; }
+
+        .footer-links a {
+            color: #6E6E82;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: #6B3FA0; }
+
+        @media (max-width: 640px) {
+            .page-header h1 { font-size: 30px; }
+            .faq-section h2 { font-size: 22px; }
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 13px; }
+            .contact-section h2 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Nova</a>
+        <ul class="nav-links">
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="support.html">Support</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="page-header">
+    <h1>Support</h1>
+    <p>Find answers to common questions or get in touch</p>
+</div>
+
+<div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en')">English</button>
+    <button class="lang-tab" onclick="switchLang('tr')">T&uuml;rk&ccedil;e</button>
+</div>
+
+<div class="faq-section">
+
+    <!-- English FAQ -->
+    <div id="faq-en" class="lang-content active">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">How do I track my period?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Open the app and tap on the date when your period started on the calendar. You can tap additional dates to mark each day of your period. To log flow intensity, tap on a marked date and select light, medium, or heavy flow. You can also add symptoms and moods for each day.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">How do predictions work?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Nova analyzes your logged cycle history to calculate your average cycle length and period duration. Based on this data, the app predicts your next period start date and fertile window. The more cycles you log, the more accurate your predictions become. Predictions appear as highlighted ranges on the calendar.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">How do I export a PDF report?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Go to the Insights tab and tap the share or export button. Choose the date range you want to include in the report. Nova will generate a detailed PDF with your cycle history, averages, and logged symptoms. You can share the PDF directly with your healthcare provider via email, Messages, or any other sharing method on your device.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">How do I restore my purchases?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Go to Settings within the app and tap "Restore Purchases." Make sure you are signed in with the same Apple ID that was used for the original purchase. Your premium features will be restored automatically. If you encounter any issues, ensure you have an active internet connection and try again.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">How do I delete my data?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Go to Settings and tap "Delete All Data." You will be asked to confirm this action. Once confirmed, all your cycle data, symptoms, moods, and notes will be permanently deleted from your device. This action cannot be undone. Since Nova stores no data on any server, deletion is immediate and complete.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">How do I change the app theme?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Go to Settings and tap "Theme" or "Appearance." Browse through the available color themes and tap to preview each one. Select your preferred theme to apply it. Some themes may be available as part of the premium features. The theme changes the overall look and accent colors throughout the app.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Turkish FAQ -->
+    <div id="faq-tr" class="lang-content">
+        <h2>S&#305;k Sorulan Sorular</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Regl d&ouml;ng&uuml;m&uuml; nas&#305;l takip ederim?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Uygulamay&#305; a&ccedil;&#305;n ve takvimde regl d&ouml;neminizin ba&#351;lad&#305;&#287;&#305; tarihe dokunun. Her g&uuml;n&uuml; i&#351;aretlemek i&ccedil;in ek tarihlere dokunabilirsiniz. Ak&#305;&#351; yo&#287;unlu&#287;unu kaydetmek i&ccedil;in i&#351;aretli bir tarihe dokunun ve hafif, orta veya yo&#287;un ak&#305;&#351; se&ccedil;in. Her g&uuml;n i&ccedil;in semptom ve ruh hali de ekleyebilirsiniz.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Tahminler nas&#305;l &ccedil;al&#305;&#351;&#305;r?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Nova, ortalama d&ouml;ng&uuml; uzunlu&#287;unuzu ve regl s&uuml;renizi hesaplamak i&ccedil;in kay&#305;tl&#305; d&ouml;ng&uuml; ge&ccedil;mi&#351;inizi analiz eder. Bu verilere dayanarak bir sonraki regl ba&#351;lang&#305;&ccedil; tarihinizi ve do&#287;urgan pencereyi tahmin eder. Ne kadar &ccedil;ok d&ouml;ng&uuml; kaydederseniz, tahminleriniz o kadar do&#287;ru olur. Tahminler takvimde vurgulanan aral&#305;klar olarak g&ouml;r&uuml;n&uuml;r.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">PDF raporu nas&#305;l d&#305;&#351;a aktar&#305;r&#305;m?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Analizler sekmesine gidin ve payla&#351; veya d&#305;&#351;a aktar d&uuml;&#287;mesine dokunun. Rapora dahil etmek istedi&#287;iniz tarih aral&#305;&#287;&#305;n&#305; se&ccedil;in. Nova, d&ouml;ng&uuml; ge&ccedil;mi&#351;iniz, ortalamalar&#305;n&#305;z ve kaydedilen semptomlar&#305;n&#305;z ile ayr&#305;nt&#305;l&#305; bir PDF olu&#351;turacakt&#305;r. PDF'yi e-posta, Mesajlar veya cihaz&#305;n&#305;zdaki di&#287;er payla&#351;&#305;m y&ouml;ntemleriyle do&#287;rudan sa&#287;l&#305;k uzman&#305;n&#305;zla payla&#351;abilirsiniz.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Sat&#305;n al&#305;mlar&#305;m&#305; nas&#305;l geri y&uuml;klerim?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Uygulama i&ccedil;indeki Ayarlar'a gidin ve "Sat&#305;n Al&#305;mlar&#305; Geri Y&uuml;kle" se&ccedil;ene&#287;ine dokunun. Orijinal sat&#305;n alma i&ccedil;in kullan&#305;lan ayn&#305; Apple ID ile giri&#351; yapt&#305;&#287;&#305;n&#305;zdan emin olun. Premium &ouml;zellikleriniz otomatik olarak geri y&uuml;klenecektir. Herhangi bir sorunla kar&#351;&#305;la&#351;&#305;rsan&#305;z, aktif bir internet ba&#287;lant&#305;n&#305;z oldu&#287;undan emin olun ve tekrar deneyin.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Verilerimi nas&#305;l silerim?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Ayarlar'a gidin ve "T&uuml;m Verileri Sil" se&ccedil;ene&#287;ine dokunun. Bu i&#351;lemi onaylaman&#305;z istenecektir. Onaylad&#305;ktan sonra t&uuml;m d&ouml;ng&uuml; verileriniz, semptomlar&#305;n&#305;z, ruh halleriniz ve notlar&#305;n&#305;z cihaz&#305;n&#305;zdan kal&#305;c&#305; olarak silinecektir. Bu i&#351;lem geri al&#305;namaz. Nova hi&ccedil;bir sunucuda veri depolamad&#305;&#287;&#305; i&ccedil;in silme i&#351;lemi anl&#305;k ve eksiksizdir.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Uygulama temas&#305;n&#305; nas&#305;l de&#287;i&#351;tiririm?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Ayarlar'a gidin ve "Tema" veya "G&ouml;r&uuml;n&uuml;m" se&ccedil;ene&#287;ine dokunun. Mevcut renk temalar&#305;na g&ouml;z at&#305;n ve her birini &ouml;nizlemek i&ccedil;in dokunun. Uygulamak i&ccedil;in tercih etti&#287;iniz temay&#305; se&ccedil;in. Baz&#305; temalar premium &ouml;zelliklerin bir par&ccedil;as&#305; olarak sunulabilir. Tema, uygulama genelindeki genel g&ouml;r&uuml;n&uuml;m&uuml; ve vurgu renklerini de&#287;i&#351;tirir.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="contact-section">
+    <h2>Still Need Help?</h2>
+    <p>We are here to help. Send us an email and we will get back to you as soon as possible.</p>
+    <a href="mailto:support@nova-health.app" class="email-btn">support@nova-health.app</a>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+    </div>
+    <p>&copy; 2026 Nova. All rights reserved.</p>
+</footer>
+
+<script>
+    function toggleFaq(el) {
+        var item = el.parentElement;
+        item.classList.toggle('open');
+    }
+
+    function switchLang(lang) {
+        document.querySelectorAll('.lang-content').forEach(function(el) {
+            el.classList.remove('active');
+        });
+        document.querySelectorAll('.lang-tab').forEach(function(el) {
+            el.classList.remove('active');
+        });
+        document.getElementById('faq-' + lang).classList.add('active');
+        if (lang === 'en') {
+            document.querySelectorAll('.lang-tab')[0].classList.add('active');
+        } else {
+            document.querySelectorAll('.lang-tab')[1].classList.add('active');
+        }
+    }
+</script>
+
+</body>
+</html>

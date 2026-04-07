@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destek - Nova</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #2D2D3A; background: #FDFAFF; line-height: 1.7; }
+        nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(107,63,160,0.08); z-index: 100; padding: 0 24px; }
+        .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-logo { font-size: 22px; font-weight: 700; background: linear-gradient(135deg, #6B3FA0, #D973A6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { text-decoration: none; color: #555; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: #6B3FA0; }
+        .lang-switch { background: linear-gradient(135deg, #6B3FA0, #D973A6); color: white; padding: 6px 14px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600; }
+        .container { max-width: 800px; margin: 0 auto; padding: 100px 24px 60px; }
+        h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #6B3FA0; }
+        .subtitle { color: #888; font-size: 15px; margin-bottom: 40px; }
+        h2 { font-size: 22px; font-weight: 600; margin: 36px 0 16px; color: #2D2D3A; }
+        .faq-item { background: white; border-radius: 12px; margin-bottom: 12px; border: 1px solid rgba(107,63,160,0.1); overflow: hidden; }
+        .faq-q { padding: 18px 24px; cursor: pointer; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-q:hover { background: rgba(107,63,160,0.03); }
+        .faq-q::after { content: '+'; font-size: 20px; color: #6B3FA0; font-weight: 300; transition: transform 0.3s; }
+        .faq-item.open .faq-q::after { transform: rotate(45deg); }
+        .faq-a { padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; font-size: 14px; color: #666; line-height: 1.8; }
+        .faq-item.open .faq-a { padding: 0 24px 18px; max-height: 300px; }
+        .contact-box { background: linear-gradient(135deg, #6B3FA0, #D973A6); border-radius: 16px; padding: 32px; text-align: center; margin-top: 40px; }
+        .contact-box h3 { color: white; font-size: 20px; margin-bottom: 8px; }
+        .contact-box p { color: rgba(255,255,255,0.85); font-size: 14px; margin-bottom: 16px; }
+        .contact-btn { display: inline-block; background: white; color: #6B3FA0; padding: 12px 28px; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 14px; }
+        .footer { text-align: center; padding: 40px 24px; color: #999; font-size: 13px; border-top: 1px solid rgba(107,63,160,0.08); margin-top: 40px; }
+        @media (max-width: 640px) { .nav-links { display: none; } h1 { font-size: 26px; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="../" class="nav-logo">Nova</a>
+            <ul class="nav-links">
+                <li><a href="../tr/">Ana Sayfa</a></li>
+                <li><a href="../tr/privacy.html">Gizlilik</a></li>
+                <li><a href="../tr/support.html">Destek</a></li>
+            </ul>
+            <a href="../en/support.html" class="lang-switch">English</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Destek Merkezi</h1>
+        <p class="subtitle">Nova hakkında en çok sorulan sorular ve yanıtları</p>
+
+        <h2>Sıkça Sorulan Sorular</h2>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Regl döngümü nasıl takip ederim?</div>
+            <div class="faq-a">Takip sekmesindeki takvimde regl günlerinize uzun basarak işaretleyebilirsiniz. Uygulama otomatik olarak döngü uzunluğunuzu hesaplayacak ve gelecek regl tarihlerinizi tahmin edecektir.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Tahminler nasıl çalışıyor?</div>
+            <div class="faq-a">Nova, adaptif bir algoritma kullanarak geçmiş döngü verilerinizi analiz eder. En az 2-3 döngü kaydettikten sonra tahminler daha doğru hale gelir. Döngü düzenliliğinize bağlı olarak güven seviyesi gösterilir.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">PDF sağlık raporu nasıl oluşturulur?</div>
+            <div class="faq-a">Profil → Sağlık → PDF Sağlık Raporu bölümüne gidin. "Rapor Oluştur" butonuna tıklayın. Oluşturulan raporu doktorunuzla paylaşabilir veya cihazınıza kaydedebilirsiniz.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Satın alımları nasıl geri yüklerim?</div>
+            <div class="faq-a">Profil sayfasında Premium bölümüne gidin. "Satın Alımları Geri Yükle" seçeneğine tıklayın. Aynı Apple ID ile yapılan önceki satın alımlar otomatik olarak geri yüklenecektir.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Verilerimi nasıl silerim?</div>
+            <div class="faq-a">Profil → Veri → Verilerimi Sil bölümüne gidin. Bu işlem tüm verilerinizi kalıcı olarak silecektir ve geri alınamaz. Silmeden önce verilerinizi indirmenizi öneririz.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Temayı nasıl değiştiririm?</div>
+            <div class="faq-a">Profil sayfasında "Tema Seç" bölümünden 5 farklı tema arasından seçim yapabilirsiniz: Pembe Mor, Koyu Tema, Pastel, Okyanus ve Gün Batımı.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Verilerim güvende mi?</div>
+            <div class="faq-a">Evet! Tüm verileriniz yalnızca cihazınızda saklanır. Sunuculara hiçbir veri gönderilmez. Ek güvenlik için Face ID/Touch ID kilidi ve anonim mod kullanabilirsiniz.</div>
+        </div>
+
+        <div class="contact-box">
+            <h3>Başka Sorunuz mu Var?</h3>
+            <p>Size yardımcı olmaktan mutluluk duyarız</p>
+            <a href="mailto:support@nova-health.app" class="contact-btn">Bize Yazın</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 Nova. Tüm hakları saklıdır.
+    </div>
+</body>
+</html>

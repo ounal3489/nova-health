@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova - Your Cycle, Your Power</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #2D2D3A;
+            background: #FDFAFF;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(107,63,160,0.08);
+            z-index: 100;
+            padding: 0 24px;
+        }
+
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6B3FA0, #D973A6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5A5A6E;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #6B3FA0; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 24px 60px;
+            background: linear-gradient(160deg, #F5EEFA 0%, #FDF0F6 40%, #FDFAFF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(217,115,166,0.12) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(107,63,160,0.08) 0%, transparent 70%);
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 680px; }
+
+        .hero-icon {
+            width: 96px;
+            height: 96px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #6B3FA0, #D973A6);
+            margin: 0 auto 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 40px rgba(107,63,160,0.25);
+        }
+
+        .hero-icon svg { width: 52px; height: 52px; }
+
+        h1 {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #6B3FA0 20%, #D973A6 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .tagline {
+            font-size: 22px;
+            color: #6E6E82;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #6B3FA0, #8B5FC0);
+            color: #fff;
+            border-radius: 14px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(107,63,160,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(107,63,160,0.4);
+        }
+
+        .btn-primary svg { width: 22px; height: 22px; }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            padding: 16px 32px;
+            background: rgba(107,63,160,0.08);
+            color: #6B3FA0;
+            border-radius: 14px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-secondary:hover { background: rgba(107,63,160,0.14); }
+
+        /* Features */
+        .features {
+            padding: 100px 24px;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #2D2D3A;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #6E6E82;
+            margin-bottom: 60px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .feature-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px 28px;
+            border: 1px solid rgba(107,63,160,0.08);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(107,63,160,0.1);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 26px;
+        }
+
+        .fi-purple { background: rgba(107,63,160,0.1); }
+        .fi-pink { background: rgba(217,115,166,0.12); }
+        .fi-blue { background: rgba(90,130,230,0.1); }
+        .fi-green { background: rgba(80,190,140,0.1); }
+        .fi-orange { background: rgba(230,150,60,0.1); }
+        .fi-red { background: rgba(220,80,80,0.1); }
+
+        .feature-card h3 {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2D2D3A;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: #6E6E82;
+            line-height: 1.6;
+        }
+
+        /* Privacy Banner */
+        .privacy-banner {
+            background: linear-gradient(135deg, #6B3FA0, #8B5FC0);
+            padding: 80px 24px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .privacy-banner h2 {
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .privacy-banner p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .btn-white {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #fff;
+            color: #6B3FA0;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .btn-white:hover { transform: translateY(-2px); }
+
+        /* Footer */
+        footer {
+            padding: 48px 24px;
+            text-align: center;
+            color: #9999AA;
+            font-size: 14px;
+        }
+
+        .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; }
+
+        .footer-links a {
+            color: #6E6E82;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: #6B3FA0; }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            h1 { font-size: 38px; }
+            .tagline { font-size: 18px; }
+            .section-title { font-size: 28px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 13px; }
+            .hero { padding: 90px 20px 50px; }
+            .privacy-banner h2 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Nova</a>
+        <ul class="nav-links">
+            <li><a href="../en/privacy.html">Privacy</a></li>
+            <li><a href="../en/support.html">Support</a></li>
+        </ul><a href="../tr/" class="lang-switch" style="background:linear-gradient(135deg,#6B3FA0,#D973A6);color:white;padding:6px 14px;border-radius:20px;text-decoration:none;font-size:13px;font-weight:600;">Türkçe</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="18" stroke="#fff" stroke-width="2.5" fill="none"/>
+                <path d="M24 8C24 8 30 16 30 24C30 32 24 40 24 40" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M24 8C24 8 18 16 18 24C18 32 24 40 24 40" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="10" y1="20" x2="38" y2="20" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                <line x1="10" y1="28" x2="38" y2="28" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <h1>Nova</h1>
+        <p class="tagline">Your Cycle, Your Power</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn-primary">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download on the App Store
+            </a>
+            <a href="../en/support.html" class="btn-secondary">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <h2 class="section-title">Everything You Need</h2>
+    <p class="section-subtitle">Beautifully designed. Completely private. Always yours.</p>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon fi-purple">&#x1F319;</div>
+            <h3>Cycle Tracking</h3>
+            <p>Log your period with a single tap. Track flow intensity, symptoms, and moods across every phase of your cycle.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon fi-pink">&#x1F52E;</div>
+            <h3>Smart Predictions</h3>
+            <p>Get accurate predictions for your next period and fertile window, powered by your own cycle history.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon fi-blue">&#x1F4CA;</div>
+            <h3>Insights &amp; Reports</h3>
+            <p>Visualize your cycle patterns with beautiful charts. Export detailed PDF reports to share with your doctor.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon fi-green">&#x1F512;</div>
+            <h3>100% Private</h3>
+            <p>Your data never leaves your device. No accounts, no cloud, no analytics. Protected with biometric lock.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon fi-orange">&#x2764;&#xFE0F;</div>
+            <h3>HealthKit Sync</h3>
+            <p>Seamlessly sync with Apple Health to keep all your health data in one place, governed by Apple's strict privacy rules.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon fi-red">&#x1F3A8;</div>
+            <h3>Beautiful Themes</h3>
+            <p>Personalize your experience with hand-crafted color themes. Make the app truly yours.</p>
+        </div>
+    </div>
+</section>
+
+<section class="privacy-banner">
+    <h2>Your Data Stays With You</h2>
+    <p>Nova collects zero data. No analytics. No tracking. No third-party sharing. Everything is stored locally on your device and protected by your biometric lock.</p>
+    <a href="../en/privacy.html" class="btn-white">Read Privacy Policy</a>
+</section>
+
+<footer>
+    <div class="footer-links">
+        <a href="../en/privacy.html">Privacy Policy</a>
+        <a href="../en/support.html">Support</a>
+        <a href="mailto:support@nova-health.app">Contact</a>
+    </div>
+    <p>&copy; 2026 Nova. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

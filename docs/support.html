@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova – Support / Destek</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #FDFAFF;
+            color: #2D2D3A;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6B3FA0 0%, #8B5FBF 40%, #D973A6 100%);
+            border-bottom: 2px solid #D973A6;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
+        .header p { color: rgba(255,255,255,0.8); font-size: 0.95rem; }
+
+        .lang-toggle { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.2rem; }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.8);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active { background: #fff; color: #6B3FA0; border-color: #fff; font-weight: 600; }
+
+        .nav-links { text-align: center; margin-top: 1rem; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.85rem; margin: 0 12px; transition: color 0.2s; }
+        .nav-links a:hover { color: #fff; }
+        .nav-links a.active { color: #fff; font-weight: 600; border-bottom: 2px solid #fff; padding-bottom: 2px; }
+
+        .container { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+        h2 { color: #6B3FA0; font-size: 1.3rem; font-weight: 600; margin: 2rem 0 1rem; }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
+            border: 1px solid rgba(107,63,160,0.1);
+            overflow: hidden;
+        }
+
+        .faq-q {
+            padding: 1rem 1.2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+            color: #2D2D3A;
+        }
+
+        .faq-q:hover { background: rgba(107,63,160,0.03); }
+        .faq-q::after { content: '+'; font-size: 1.2rem; color: #6B3FA0; font-weight: 300; transition: transform 0.3s; }
+        .faq-item.open .faq-q::after { transform: rotate(45deg); }
+
+        .faq-a {
+            padding: 0 1.2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .faq-item.open .faq-a { padding: 0 1.2rem 1rem; max-height: 300px; }
+
+        .contact-box {
+            background: linear-gradient(135deg, #6B3FA0, #D973A6);
+            border-radius: 14px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        .contact-box h3 { color: white; font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .contact-box p { color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-bottom: 1rem; }
+
+        .contact-btn {
+            display: inline-block;
+            background: white;
+            color: #6B3FA0;
+            padding: 0.7rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .contact-btn:hover { transform: scale(1.05); text-decoration: none; }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(107,63,160,0.08);
+        }
+
+        a { color: #6B3FA0; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Nova</h1>
+    <p>Support / Destek</p>
+    <div class="lang-toggle">
+        <button class="lang-btn active" onclick="switchLang('en')">English</button>
+        <button class="lang-btn" onclick="switchLang('tr')">Türkçe</button>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Privacy Policy</a>
+        <a href="support.html" class="active">Support</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- ENGLISH -->
+    <div id="lang-en">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I track my period?</div>
+            <div class="faq-a">Go to the Tracking tab and long-press on a day in the calendar to mark it as a period day. The app will automatically calculate your cycle length and predict future periods.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do predictions work?</div>
+            <div class="faq-a">Nova uses an adaptive algorithm that analyzes your past cycle data. After recording 2-3 cycles, predictions become more accurate. A confidence level is shown based on your cycle regularity.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I generate a PDF health report?</div>
+            <div class="faq-a">Go to Profile → Health → PDF Health Report. Tap "Generate Report" to create a comprehensive health summary. You can share it with your doctor or save it to your device.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I restore my purchases?</div>
+            <div class="faq-a">Go to Profile and tap the Premium section. Select "Restore Purchases". Previous purchases made with the same Apple ID will be automatically restored.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I delete my data?</div>
+            <div class="faq-a">Go to Profile → Data → Delete My Data. This will permanently delete all your data and cannot be undone. We recommend downloading your data before deleting.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I change the theme?</div>
+            <div class="faq-a">Go to Profile and scroll to "Choose Theme". You can select from 5 different themes: Pink Purple, Dark Mode, Pastel, Ocean, and Sunset.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is my data secure?</div>
+            <div class="faq-a">Yes! All data is stored only on your device. No data is sent to any servers. You can enable Face ID/Touch ID lock and anonymous mode for additional security.</div>
+        </div>
+
+        <div class="contact-box">
+            <h3>Need More Help?</h3>
+            <p>We're happy to assist you</p>
+            <a href="mailto:ounal3489@gmail.com" class="contact-btn">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- TURKISH -->
+    <div id="lang-tr" style="display: none;">
+        <h2>Sıkça Sorulan Sorular</h2>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Regl döngümü nasıl takip ederim?</div>
+            <div class="faq-a">Takip sekmesindeki takvimde regl günlerinize uzun basarak işaretleyebilirsiniz. Uygulama otomatik olarak döngü uzunluğunuzu hesaplayacak ve gelecek regl tarihlerinizi tahmin edecektir.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Tahminler nasıl çalışıyor?</div>
+            <div class="faq-a">Nova, adaptif bir algoritma kullanarak geçmiş döngü verilerinizi analiz eder. En az 2-3 döngü kaydettikten sonra tahminler daha doğru hale gelir. Döngü düzenliliğinize bağlı olarak güven seviyesi gösterilir.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">PDF sağlık raporu nasıl oluşturulur?</div>
+            <div class="faq-a">Profil → Sağlık → PDF Sağlık Raporu bölümüne gidin. "Rapor Oluştur" butonuna tıklayın. Oluşturulan raporu doktorunuzla paylaşabilir veya cihazınıza kaydedebilirsiniz.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Satın alımları nasıl geri yüklerim?</div>
+            <div class="faq-a">Profil sayfasında Premium bölümüne gidin. "Satın Alımları Geri Yükle" seçeneğine tıklayın. Aynı Apple ID ile yapılan önceki satın alımlar otomatik olarak geri yüklenecektir.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Verilerimi nasıl silerim?</div>
+            <div class="faq-a">Profil → Veri → Verilerimi Sil bölümüne gidin. Bu işlem tüm verilerinizi kalıcı olarak silecektir ve geri alınamaz. Silmeden önce verilerinizi indirmenizi öneririz.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Temayı nasıl değiştiririm?</div>
+            <div class="faq-a">Profil sayfasında "Tema Seç" bölümünden 5 farklı tema arasından seçim yapabilirsiniz: Pembe Mor, Koyu Tema, Pastel, Okyanus ve Gün Batımı.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Verilerim güvende mi?</div>
+            <div class="faq-a">Evet! Tüm verileriniz yalnızca cihazınızda saklanır. Sunuculara hiçbir veri gönderilmez. Ek güvenlik için Face ID/Touch ID kilidi ve anonim mod kullanabilirsiniz.</div>
+        </div>
+
+        <div class="contact-box">
+            <h3>Başka Sorunuz mu Var?</h3>
+            <p>Size yardımcı olmaktan mutluluk duyarız</p>
+            <a href="mailto:ounal3489@gmail.com" class="contact-btn">Bize Yazın</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    &copy; 2026 Nova. All rights reserved. / Tüm hakları saklıdır.
+</div>
+
+<script>
+    function switchLang(lang) {
+        document.getElementById('lang-en').style.display = lang === 'en' ? 'block' : 'none';
+        document.getElementById('lang-tr').style.display = lang === 'tr' ? 'block' : 'none';
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.textContent.includes(lang === 'en' ? 'English' : 'Türkçe'));
+        });
+    }
+</script>
+
+</body>
+</html>

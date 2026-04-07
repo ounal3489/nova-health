@@ -3,35 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova — Your Cycle, Your Power</title>
-    <script>
-        // Auto-redirect based on browser language
-        const lang = navigator.language || navigator.userLanguage;
-        if (lang.startsWith('tr')) {
-            window.location.href = 'tr/';
-        } else {
-            window.location.href = 'en/';
-        }
-    </script>
+    <title>Nova – Privacy Policy / Gizlilik Politikası</title>
     <style>
-        body { font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #FDFAFF; text-align: center; }
-        .container { padding: 40px; }
-        h1 { font-size: 36px; background: linear-gradient(135deg, #6B3FA0, #D973A6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 24px; }
-        .links { display: flex; gap: 16px; justify-content: center; }
-        a { display: inline-block; padding: 12px 32px; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 16px; transition: transform 0.2s; }
-        a:hover { transform: scale(1.05); }
-        .tr { background: linear-gradient(135deg, #6B3FA0, #D973A6); color: white; }
-        .en { background: white; color: #6B3FA0; border: 2px solid #6B3FA0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #FDFAFF;
+            color: #2D2D3A;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6B3FA0 0%, #8B5FBF 40%, #D973A6 100%);
+            border-bottom: 2px solid #D973A6;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+
+        .lang-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.8);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: #fff;
+            color: #6B3FA0;
+            border-color: #fff;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        .effective-date {
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(107,63,160,0.1);
+        }
+
+        h2 {
+            color: #6B3FA0;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 2rem 0 0.8rem;
+            padding-left: 0.8rem;
+            border-left: 3px solid #D973A6;
+        }
+
+        p {
+            margin-bottom: 0.8rem;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            margin: 0.5rem 0 1rem 1.5rem;
+            color: #666;
+            font-size: 0.93rem;
+        }
+
+        ul li { margin-bottom: 0.4rem; }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(107,63,160,0.06), rgba(217,115,166,0.04));
+            border: 1px solid rgba(107,63,160,0.15);
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            color: #6B3FA0;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .nav-links {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin: 0 12px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #fff; }
+        .nav-links a.active { color: #fff; font-weight: 600; border-bottom: 2px solid #fff; padding-bottom: 2px; }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(107,63,160,0.08);
+        }
+
+        a { color: #6B3FA0; text-decoration: none; }
+        a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Nova</h1>
-        <p style="color: #888; margin-bottom: 32px;">Choose your language / Dilinizi seçin</p>
-        <div class="links">
-            <a href="tr/" class="tr">Türkçe</a>
-            <a href="en/" class="en">English</a>
-        </div>
+
+<div class="header">
+    <h1>Nova</h1>
+    <p>Privacy Policy / Gizlilik Politikası</p>
+    <div class="lang-toggle">
+        <button class="lang-btn active" onclick="switchLang('en')">English</button>
+        <button class="lang-btn" onclick="switchLang('tr')">Türkçe</button>
     </div>
+    <div class="nav-links">
+        <a href="index.html" class="active">Privacy Policy</a>
+        <a href="support.html">Support</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- ENGLISH -->
+    <div id="lang-en">
+        <p class="effective-date">Effective Date: April 7, 2026</p>
+
+        <h2>Overview</h2>
+        <p>Nova is a women's health tracking app that helps you monitor your menstrual cycle, symptoms, mood, and overall wellness. This Privacy Policy explains how the app handles your information.</p>
+
+        <div class="highlight-box">
+            <p><strong>In short:</strong> Nova does not collect, transmit, or store any of your personal data on external servers. All your data stays on your device.</p>
+        </div>
+
+        <h2>Data Storage</h2>
+        <p>All data you enter into Nova — including cycle tracking, symptom logs, mood entries, sleep, water intake, weight records, medication reminders, and personal notes — is stored locally on your device using Apple's on-device storage technologies (UserDefaults). This data never leaves your device and is not accessible to the developer or any third party.</p>
+
+        <h2>Data Collection</h2>
+        <p>Nova does <strong>not</strong> collect any of the following:</p>
+        <ul>
+            <li>Personal identification information (name, email, phone number)</li>
+            <li>Health or medical data sent to external servers</li>
+            <li>Usage analytics or behavioral data</li>
+            <li>Advertising identifiers</li>
+            <li>Location data</li>
+            <li>Crash reports or diagnostics sent to the developer</li>
+        </ul>
+
+        <h2>Apple HealthKit</h2>
+        <p>If you choose to enable Apple Health integration, Nova may read and write health data through Apple's HealthKit framework. This data is governed by <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's Privacy Policy</a> and is never transmitted to our servers.</p>
+
+        <h2>In-App Purchases</h2>
+        <p>Nova offers optional premium subscriptions processed through Apple's App Store. Payment information is handled entirely by Apple. We do not have access to your payment details.</p>
+
+        <h2>Data Security</h2>
+        <ul>
+            <li>All data is stored in the app's sandboxed storage on your device</li>
+            <li>Optional biometric lock (Face ID / Touch ID) for additional security</li>
+            <li>Anonymous mode available to hide personal information</li>
+        </ul>
+
+        <h2>Data Deletion</h2>
+        <p>You can delete all your data at any time from the app's <strong>Profile → Data → Delete My Data</strong> option. This action is permanent and cannot be undone. Alternatively, uninstalling the app removes all data.</p>
+
+        <h2>Third-Party Services</h2>
+        <p>No third-party SDKs, analytics tools, or advertising networks are integrated into Nova. The only external framework used is Apple's HealthKit (optional).</p>
+
+        <h2>Data Sharing</h2>
+        <p>Since no data is collected, no data is shared with or sold to any third parties.</p>
+
+        <h2>Children's Privacy</h2>
+        <p>Nova is not directed at children under the age of 13 and does not knowingly collect information from children.</p>
+
+        <h2>Changes to This Policy</h2>
+        <p>If this Privacy Policy is updated, the revised version will be posted on this page with an updated effective date.</p>
+
+        <h2>Contact</h2>
+        <p>If you have questions about this Privacy Policy, please contact:</p>
+        <p><strong>Oğuz Ünal</strong><br>
+        Email: <a href="mailto:ounal3489@gmail.com">ounal3489@gmail.com</a></p>
+    </div>
+
+    <!-- TURKISH -->
+    <div id="lang-tr" style="display: none;">
+        <p class="effective-date">Yürürlük Tarihi: 7 Nisan 2026</p>
+
+        <h2>Genel Bakış</h2>
+        <p>Nova, regl döngüsü, semptom, ruh hali ve genel sağlık takibi yapmanıza yardımcı olan bir kadın sağlığı uygulamasıdır. Bu Gizlilik Politikası, uygulamanın bilgilerinizi nasıl ele aldığını açıklar.</p>
+
+        <div class="highlight-box">
+            <p><strong>Kısaca:</strong> Nova, kişisel verilerinizi herhangi bir harici sunucuya toplamaz, iletmez veya depolamaz. Tüm verileriniz cihazınızda kalır.</p>
+        </div>
+
+        <h2>Veri Depolama</h2>
+        <p>Nova'ya girdiğiniz tüm veriler — döngü takibi, semptom kayıtları, ruh hali girişleri, uyku, su tüketimi, kilo kayıtları, ilaç hatırlatmaları ve kişisel notlar dahil — Apple'ın cihaz üzeri depolama teknolojileri (UserDefaults) kullanılarak yalnızca cihazınızda saklanır. Bu veriler cihazınızdan hiçbir zaman çıkmaz ve geliştirici ya da üçüncü taraflar tarafından erişilemez.</p>
+
+        <h2>Veri Toplama</h2>
+        <p>Nova aşağıdakilerin <strong>hiçbirini</strong> toplamaz:</p>
+        <ul>
+            <li>Kişisel kimlik bilgileri (ad, e-posta, telefon numarası)</li>
+            <li>Harici sunuculara gönderilen sağlık veya tıbbi veriler</li>
+            <li>Kullanım analitiği veya davranışsal veriler</li>
+            <li>Reklam tanımlayıcıları</li>
+            <li>Konum verileri</li>
+            <li>Geliştiriciye gönderilen çökme raporları veya tanılama verileri</li>
+        </ul>
+
+        <h2>Apple HealthKit</h2>
+        <p>Apple Sağlık entegrasyonunu etkinleştirmeyi seçerseniz, Nova Apple'ın HealthKit çerçevesi aracılığıyla sağlık verilerini okuyabilir ve yazabilir. Bu veriler <a href="https://www.apple.com/tr/legal/privacy/" target="_blank">Apple Gizlilik Politikası</a> kapsamındadır ve sunucularımıza asla iletilmez.</p>
+
+        <h2>Uygulama İçi Satın Almalar</h2>
+        <p>Nova, Apple'ın App Store'u aracılığıyla işlenen isteğe bağlı premium abonelikler sunar. Ödeme bilgileri tamamen Apple tarafından yönetilir. Ödeme detaylarınıza erişimimiz yoktur.</p>
+
+        <h2>Veri Güvenliği</h2>
+        <ul>
+            <li>Tüm veriler cihazınızda korumalı alanda saklanır</li>
+            <li>Ek güvenlik için isteğe bağlı biyometrik kilit (Face ID / Touch ID)</li>
+            <li>Kişisel bilgileri gizlemek için anonim mod</li>
+        </ul>
+
+        <h2>Veri Silme</h2>
+        <p>Tüm verilerinizi istediğiniz zaman uygulamanın <strong>Profil → Veri → Verilerimi Sil</strong> seçeneğinden silebilirsiniz. Bu işlem kalıcıdır ve geri alınamaz. Alternatif olarak, uygulamayı kaldırmak tüm verileri siler.</p>
+
+        <h2>Üçüncü Taraf Hizmetler</h2>
+        <p>Nova'ya hiçbir üçüncü taraf SDK, analitik aracı veya reklam ağı entegre edilmemiştir. Kullanılan tek harici çerçeve Apple'ın HealthKit'idir (isteğe bağlı).</p>
+
+        <h2>Veri Paylaşımı</h2>
+        <p>Herhangi bir veri toplanmadığından, hiçbir veri üçüncü taraflarla paylaşılmaz veya satılmaz.</p>
+
+        <h2>Çocukların Gizliliği</h2>
+        <p>Nova, 13 yaşın altındaki çocuklara yönelik değildir ve çocuklardan bilerek bilgi toplamaz.</p>
+
+        <h2>Bu Politikadaki Değişiklikler</h2>
+        <p>Bu Gizlilik Politikası güncellenirse, revize edilmiş sürüm güncellenmiş yürürlük tarihiyle birlikte bu sayfada yayınlanacaktır.</p>
+
+        <h2>İletişim</h2>
+        <p>Bu Gizlilik Politikası hakkında sorularınız varsa lütfen iletişime geçin:</p>
+        <p><strong>Oğuz Ünal</strong><br>
+        E-posta: <a href="mailto:ounal3489@gmail.com">ounal3489@gmail.com</a></p>
+    </div>
+
+</div>
+
+<div class="footer">
+    &copy; 2026 Nova. All rights reserved. / Tüm hakları saklıdır.
+</div>
+
+<script>
+    function switchLang(lang) {
+        document.getElementById('lang-en').style.display = lang === 'en' ? 'block' : 'none';
+        document.getElementById('lang-tr').style.display = lang === 'tr' ? 'block' : 'none';
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.textContent.includes(lang === 'en' ? 'English' : 'Türkçe'));
+        });
+    }
+</script>
+
 </body>
 </html>
